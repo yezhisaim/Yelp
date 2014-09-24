@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		809B2A90F772400D965C235D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AD944E24895463E81F67C26 /* libPods.a */; };
+		BA0BEFB019D17A85003F34AF /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0BEFAF19D17A85003F34AF /* Filters.swift */; };
+		BA0BEFB219D18209003F34AF /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0BEFB119D18209003F34AF /* FilterCell.swift */; };
+		BA5CA76419D13C0700177CEA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5CA76319D13C0600177CEA /* Result.swift */; };
 		BA8F751719CAF88500A08EB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F751619CAF88500A08EB3 /* AppDelegate.swift */; };
 		BA8F751C19CAF88500A08EB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA8F751A19CAF88500A08EB3 /* Main.storyboard */; };
 		BA8F751E19CAF88500A08EB3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA8F751D19CAF88500A08EB3 /* Images.xcassets */; };
 		BA8F752119CAF88500A08EB3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA8F751F19CAF88500A08EB3 /* LaunchScreen.xib */; };
 		BA8F752D19CAF88500A08EB3 /* YelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F752C19CAF88500A08EB3 /* YelpTests.swift */; };
 		BA8F753719CAF9E800A08EB3 /* YelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F753619CAF9E800A08EB3 /* YelpViewController.swift */; };
-		BA8F753919CAFA1C00A08EB3 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F753819CAFA1C00A08EB3 /* RestaurantTableViewCell.swift */; };
+		BA8F753919CAFA1C00A08EB3 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8F753819CAFA1C00A08EB3 /* ResultTableViewCell.swift */; };
 		BA9B3B7519CB208E00026ABE /* YelpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9B3B7419CB208E00026ABE /* YelpClient.m */; };
+		BAE788D819CFFD2700B03405 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE788D719CFFD2600B03405 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		4AD944E24895463E81F67C26 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA0BEFAF19D17A85003F34AF /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		BA0BEFB119D18209003F34AF /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		BA5CA76319D13C0600177CEA /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		BA8F751119CAF88500A08EB3 /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA8F751519CAF88500A08EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA8F751619CAF88500A08EB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,10 +47,11 @@
 		BA8F752B19CAF88500A08EB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA8F752C19CAF88500A08EB3 /* YelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpTests.swift; sourceTree = "<group>"; };
 		BA8F753619CAF9E800A08EB3 /* YelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpViewController.swift; sourceTree = "<group>"; };
-		BA8F753819CAFA1C00A08EB3 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		BA8F753819CAFA1C00A08EB3 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		BA8F753A19CB140A00A08EB3 /* YelpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpClient.h; sourceTree = "<group>"; };
 		BA8F753B19CB147300A08EB3 /* Yelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		BA9B3B7419CB208E00026ABE /* YelpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpClient.m; sourceTree = "<group>"; };
+		BAE788D719CFFD2600B03405 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		EEAB4D3A3CD2468087F5E350 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,8 +113,12 @@
 				BA8F751F19CAF88500A08EB3 /* LaunchScreen.xib */,
 				BA8F751419CAF88500A08EB3 /* Supporting Files */,
 				BA8F753619CAF9E800A08EB3 /* YelpViewController.swift */,
-				BA8F753819CAFA1C00A08EB3 /* RestaurantTableViewCell.swift */,
+				BA8F753819CAFA1C00A08EB3 /* ResultTableViewCell.swift */,
 				BA8F753B19CB147300A08EB3 /* Yelp-Bridging-Header.h */,
+				BAE788D719CFFD2600B03405 /* FilterViewController.swift */,
+				BA5CA76319D13C0600177CEA /* Result.swift */,
+				BA0BEFAF19D17A85003F34AF /* Filters.swift */,
+				BA0BEFB119D18209003F34AF /* FilterCell.swift */,
 			);
 			path = Yelp;
 			sourceTree = "<group>";
@@ -271,10 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0BEFB019D17A85003F34AF /* Filters.swift in Sources */,
+				BA0BEFB219D18209003F34AF /* FilterCell.swift in Sources */,
+				BA5CA76419D13C0700177CEA /* Result.swift in Sources */,
 				BA9B3B7519CB208E00026ABE /* YelpClient.m in Sources */,
 				BA8F753719CAF9E800A08EB3 /* YelpViewController.swift in Sources */,
-				BA8F753919CAFA1C00A08EB3 /* RestaurantTableViewCell.swift in Sources */,
+				BA8F753919CAFA1C00A08EB3 /* ResultTableViewCell.swift in Sources */,
 				BA8F751719CAF88500A08EB3 /* AppDelegate.swift in Sources */,
+				BAE788D819CFFD2700B03405 /* FilterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

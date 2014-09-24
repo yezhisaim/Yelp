@@ -8,13 +8,16 @@
 
 import UIKit
 
-class YelpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class YelpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     //Outlets
-    @IBOutlet weak var restaurantTableView: UITableView!
+    @IBOutlet weak var resultTableView: UITableView!
+    @IBOutlet weak var filtersBarButton: UIBarButtonItem!
     
     //User defined vars
-    var users = [[String:String]]() //Name:Location
+    var resultsArray: [Result]! = []
+    var searchBar: UISearchBar!
+    var searchTerm = "thai" as NSString
     
     //Yelp OAuth vars
     let kYelpConsumerKey = "qw5xQbJuqz_5B9SnTf8Uug"
@@ -22,29 +25,55 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
     let kYelpToken = "fXos7cstus5ZvdAZ8GInINxzgg7dC5-k"
     let kYelpTokenSecret = "HRORrP0pmJBZ42PTtHYdGroEIfQ"
     
+    //Get data from Yelp
+    func getDataFromYelp(searchString: NSString)
+    {
+        //Yelp auth
+        var response = "" as NSString
+        let client = YelpClient(consumerKey: kYelpConsumerKey, consumerSecret: kYelpConsumerSecret, accessToken: kYelpToken, accessSecret: kYelpTokenSecret)
+        
+        self.resultsArray.removeAll(keepCapacity: false)
+        client.searchWithTerm(searchString,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                if let resultsDictArray = response["businesses"] as [NSDictionary]? {
+                    for result in resultsDictArray {
+                        self.resultsArray.append(Result(result: result))
+                    }
+                self.resultTableView.reloadData()
+                }
+            }) { (operation :AFHTTPRequestOperation!, error :NSError!) -> Void in
+                NSLog("error: \(error.description)");
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Yelp auth
-        var response = "" as String
-        let client = YelpClient(consumerKey: kYelpConsumerKey, consumerSecret: kYelpConsumerSecret, accessToken: kYelpToken, accessSecret: kYelpTokenSecret)
+        resultTableView.delegate = self
+        resultTableView.dataSource = self
+      //  resultTableView.rowHeight = UITableViewAutomaticDimension
+      //  resultTableView.estimatedRowHeight = 100
         
-        client.searchWithTerm("Thai", {(operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            NSLog("response: \(response)");
-            }) {(operation :AFHTTPRequestOperation!, error :NSError!) -> Void in
-                NSLog("error: \(error.description)");
-        }
+        //Nav bar controls
+        self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        searchBar = UISearchBar(frame: CGRect(x: 0,y: 0,width: 300,height: 35))
+        searchBar?.placeholder = "thai"
+        searchBar?.delegate = self
+        self.navigationItem.titleView = searchBar
+
+        filtersBarButton.tintColor = UIColor.whiteColor()
+        filtersBarButton.style = UIBarButtonItemStyle.Bordered
+        self.navigationItem.leftBarButtonItem = filtersBarButton
         
-        restaurantTableView.delegate = self
-        restaurantTableView.dataSource = self
+        self.getDataFromYelp("Thai")
         
-        users = [["Isai":"Bangalore,India"],
-            ["XYZ":"Bangalore,India"],
-            ["ABC":"Bangalore,India"],
-            ["MNO":"Bangalore,India"]
-        ]
-        
-        // Do any additional setup after loading the view.
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        self.searchTerm = searchBar.text
+        self.getDataFromYelp(searchBar.text);
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,25 +83,32 @@ class YelpViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return users.count
+        return resultsArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell = restaurantTableView.dequeueReusableCellWithIdentifier("RestaurantTableViewCell") as RestaurantTableViewCell
-        
-        var user = users[indexPath.row]
-        
-        for (key,value) in user
+
+        var cell = resultTableView.dequeueReusableCellWithIdentifier("ResultTableViewCell") as ResultTableViewCell
+        if(!resultsArray.isEmpty)
         {
-            println(key)
-            println(value)
-            cell.nameLabel.text = key
-            cell.locationLabel.text = value
+         var result = resultsArray[indexPath.row]
+         var row = indexPath.row + 1 as NSInteger
+         cell.updateCell(row, result: result)
         }
         return cell
     }
-
+    
+    func searchWithFilters(filters: [NSString])
+    {
+        var params = searchTerm + ", "
+        for filter in filters
+        {
+            params += filter + ", "
+        }
+        dropLast(params)
+        self.getDataFromYelp(params)
+    }
+    
     /*
     // MARK: - Navigation
 

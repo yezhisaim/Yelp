@@ -1,21 +1,17 @@
 //
-//  RestaurantTableViewCell.swift
+//  filterCell.swift
 //  Yelp
 //
-//  Created by isai on 9/18/14.
+//  Created by isai on 9/23/14.
 //  Copyright (c) 2014 isai. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantTableViewCell: UITableViewCell {
+class FilterCell: UITableViewCell {
 
-    //Outlets
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var restaurantImageView: UIImageView!
-    
+    @IBOutlet weak var filterTypeLabel: UILabel!
+    @IBOutlet weak var switchControl: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
